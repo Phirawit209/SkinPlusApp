@@ -5,28 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import Home from './screens/Home';
 import MyAppoint from './screens/MyAppoint';
 import AppointCalendar from './screens/AppointCalendar';
 import Login from './screens/Login';
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Login"
-        onPress={() => navigation.navigate('Login')}
-      />
-
-    <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('AppointCalendar',{serviceType: 1, slotType: 1, appointDatetime: '2023-12-21', description: 'test' })}
-      />  
-    </View>
-  );
-}
-
-
 
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -36,12 +18,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
+
+        
       <Tab.Screen name="First">
           {() => (
             <HomeStack.Navigator>
               <HomeStack.Screen 
                 name="Home" 
-                component={HomeScreen} 
+                component={Home} 
                 options={{ title: 'My home', headerShown:false }}
               />
               <HomeStack.Screen name="Login" component={Login} options={{ title: 'My home', headerShown:false }} />
@@ -50,17 +34,22 @@ export default function App() {
             </HomeStack.Navigator>
           )}
         </Tab.Screen>
+
+
+
         <Tab.Screen name="Second">
           {() => (
             <SettingsStack.Navigator>
               <HomeStack.Screen 
-                name="Home" 
-                component={HomeScreen} 
-                options={{ title: 'My home', headerShown:false }}
+                name="Login" 
+                component={Login} 
+                options={{ title: 'Login', headerShown:false }}
               />
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>
+
+
        
       </Tab.Navigator>
     </NavigationContainer>
