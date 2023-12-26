@@ -9,6 +9,9 @@ import Home from './screens/Home';
 import MyAppoint from './screens/MyAppoint';
 import AppointCalendar from './screens/AppointCalendar';
 import Login from './screens/Login';
+import Register from './screens/Register';
+import Profile from './screens/Profile';
+
 
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -29,8 +32,10 @@ export default function App() {
                 options={{ title: 'My home', headerShown:false }}
               />
               <HomeStack.Screen name="Login" component={Login} options={{ title: 'My home', headerShown:false }} />
+              <HomeStack.Screen name="Profile" component={Profile} options={{ title: 'Profile', headerShown:false }} />
               <HomeStack.Screen name="MyAppoint" component={MyAppoint} />
               <HomeStack.Screen name="AppointCalendar" component={AppointCalendar} />
+              <HomeStack.Screen name="Register" component={Register} />
             </HomeStack.Navigator>
           )}
         </Tab.Screen>

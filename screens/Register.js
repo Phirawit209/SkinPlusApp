@@ -1,4 +1,6 @@
 import React, { Component, useState,useEffect } from "react";
+import { Radio } from 'galio-framework';
+
 import {
     StyleSheet,
     View,
@@ -8,30 +10,39 @@ import {
     TouchableOpacity,
     Text,
     Image,
-    Alert,
 } from "react-native";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 import axios from 'axios';
 import deviceStorage from '../helpers/deviceStorage'
 
-const Login = (props) => {
+const Register = (props) => {
     const navigation = props.navigation;
     const [Username, setUsername] = useState('');
     const [Password, setPassword] = useState('');
-    
-    React.useEffect(() => {
+    const [Name, setName] = useState('');
+    const [Birthday, setBirthday] = useState('');
+    const [Religion, setReligion] = useState('');
+    const [Address, setAddress] = useState('');
+    const [Status, setStatus]= useState('');
 
+    React.useEffect(() => {
+        
     }, []);
 
-    const handleLogin = () => {
+    const handleRegister = () => {
         const headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
         
         const data = {
-            email: Username,
-            password: Password,
+            email:Username,
+            password:Password,
+            name:Name,
+            birthday:Birthday,
+            religion:Religion,
+            address:Address,
+            status:Status,
         }
 /*
         axios.post("http://telemed.trangskin.go.th:5001/api/v1/identity/login", data, {
@@ -48,6 +59,11 @@ const Login = (props) => {
     var postData = {
         email: Username,
         password: Password,
+        name: Name,
+        birthday: Birthday,
+        religion: Religion,
+        address: Address,
+        status:Status,
       };
       
         let axiosConfig = {
@@ -67,18 +83,7 @@ const Login = (props) => {
             //deviceStorage.saveItem("refreshToken", response.data.refreshToken);
             //deviceStorage.saveItem("fullName", response.data.fullName);
 
-            if (response.data == 'ok') {
-                Alert.alert (
-                    response.data,
-                    response.massage,
-                    [
-                { text: "เข้าสู่ระบบสำเร็จ" , onPress: () => console.log(response.data) 
-            }        
-                    ]
-                )
-            } 
-            navigation.navigate('Profile'); 
-            
+            navigation.navigate('Home'); 
         })
         .catch((err) => {
             console.log("AXIOS ERROR: ", err);
@@ -86,7 +91,8 @@ const Login = (props) => {
     }
 
     return (
-        <>
+
+<>
            <View style={styles.root}>
             <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" />
             <View style={styles.background}>
@@ -94,7 +100,8 @@ const Login = (props) => {
                     style={styles.rect}
                     imageStyle={styles.rect_imageStyle}
                     source={require("../assets/images/Gradient_pQrQkkD.png")}
-                >
+
+>
                     <View style={styles.formStackStack}>
                         <View style={styles.formStack}>
                             <View style={styles.form}>
@@ -102,8 +109,10 @@ const Login = (props) => {
                                     <View style={styles.username}>
                                         <EvilIconsIcon
                                             name="user"
-                                            style={styles.icon22}
+                                            style={styles.icon2}
                                         ></EvilIconsIcon>
+
+
                                         <TextInput
                                             placeholder="Username"
                                             placeholderTextColor="rgba(255,255,255,1)"
@@ -112,6 +121,8 @@ const Login = (props) => {
                                             onChangeText={e => setUsername(e)}
                                             value={Username}
                                         ></TextInput>
+
+
                                     </View>
                                     <View style={styles.password}>
                                         <EvilIconsIcon
@@ -121,19 +132,98 @@ const Login = (props) => {
                                         <TextInput
                                             placeholder="Password"
                                             placeholderTextColor="rgba(255,255,255,1)"
-                                            secureTextEntry={true}
+                                            secureTextEntry={false}
                                             style={styles.passwordInput}
                                             onChangeText={e => setPassword(e)} 
                                             value={Password}
+                                        ></TextInput>
+
+
+                                </View>
+                                    <View style={styles.password}>
+                                        <EvilIconsIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        ></EvilIconsIcon>
+                                        <TextInput
+                                            placeholder="Name"
+                                            placeholderTextColor="rgba(255,255,255,1)"
+                                            secureTextEntry={false}
+                                            style={styles.nameInput}
+                                            onChangeText={e => setName(e)} 
+                                            value={Name}
+                                        ></TextInput>
+
+                                </View>
+                                    <View style={styles.password}>
+                                        <EvilIconsIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        ></EvilIconsIcon>
+                                        <TextInput
+                                            placeholder="Birthday"
+                                            placeholderTextColor="rgba(255,255,255,1)"
+                                            secureTextEntry={false}
+                                            style={styles.birthdayInput}
+                                            onChangeText={e => setBirthday(e)} 
+                                            value={Birthday}
+                                        ></TextInput>
+
+
+                                </View>
+                                    <View style={styles.password}>
+                                        <EvilIconsIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        ></EvilIconsIcon>
+                                        <TextInput
+                                            placeholder="Religion"
+                                            placeholderTextColor="rgba(255,255,255,1)"
+                                            secureTextEntry={false}
+                                            style={styles.religionInput}
+                                            onChangeText={e => setBirthday(e)} 
+                                            value={Religion}
+                                        ></TextInput>
+                                        
+
+                                 </View>
+                                    <View style={styles.password}>
+                                        <EvilIconsIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        ></EvilIconsIcon>
+                                        <TextInput
+                                            placeholder="Address"
+                                            placeholderTextColor="rgba(255,255,255,1)"
+                                            secureTextEntry={false}
+                                            style={styles.addressInput}
+                                            onChangeText={e => setAddress(e)} 
+                                            value={Address}
+                                        ></TextInput>
+
+
+                                </View>
+                                    <View style={styles.password}>
+                                        <EvilIconsIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        ></EvilIconsIcon>
+                                        <TextInput
+                                            placeholder="Status"
+                                            placeholderTextColor="rgba(255,255,255,1)"
+                                            secureTextEntry={false}
+                                            style={styles.statusInput}
+                                            onChangeText={e => setStatus(e)} 
+                                            value={Status}
                                         ></TextInput>
                                     </View>
                                 </View>
                                 <View style={styles.usernameColumnFiller}></View>
                                 <TouchableOpacity
-                                    onPress={() => handleLogin()}
+                                    onPress={() => handleRegister()}
                                     style={styles.button}
                                 >
-                                    <Text style={styles.text2}>เข้าสู่ระบบ</Text>
+                                    <Text style={styles.text2}>ลงทะเบียน</Text>
                                 </TouchableOpacity>
                             </View>
                             <Image
@@ -151,10 +241,10 @@ const Login = (props) => {
                             style={styles.button2}
                         >
                             <View style={styles.createAccountFiller}></View>
-                            <Text style={styles.createAccount}>ลงทะเบียน</Text>
+                            <Text style={styles.createAccount}>Create Account</Text>
                         </TouchableOpacity>
                         <View style={styles.button2Filler}></View>
-                        <Text style={styles.needHelp}>ความช่วยเหลือ?</Text>
+                        <Text style={styles.needHelp}>Need Help?</Text>
                     </View>
                 </ImageBackground>
             </View>
@@ -297,4 +387,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Login;
+export default Register;
