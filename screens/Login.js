@@ -68,23 +68,28 @@ const Login = (props) => {
             //deviceStorage.saveItem("fullName", response.data.fullName);
 
             if (response.data == 'ok') {
-                Alert.alert (
-                    response.data,
-                    response.massage,
-                    [
-                { text: "เข้าสู่ระบบสำเร็จ" , onPress: () => console.log(response.data) 
-            }        
-                    ]
-                )
+                // Successful login
+                Alert.alert(
+                    'เข้าสู่ระบบสำเร็จ',
+                    'ยินดีต้อนรับเข้าสู่ระบบ',
+                );
             } 
-            navigation.navigate('Profile'); 
-            
-        })
-        .catch((err) => {
-            console.log("AXIOS ERROR: ", err);
-        })
-    }
 
+            navigation.navigate('Home'); 
+
+        })
+
+    .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+        // Handle other errors (e.g., network issues)
+        // Unsuccessful login
+        Alert.alert(
+            'เข้าสู่ระบบไม่สำเร็จ',
+            'กรุณาตรวจสอบชื่อผู้ใช้งานและรหัสผ่าน',
+            [{ text: 'ตกลง', onPress: () => console.log('เข้าสู่ระบบไม่สำเร็จ') }]
+        );
+    })
+        }
     return (
         <>
            <View style={styles.root}>

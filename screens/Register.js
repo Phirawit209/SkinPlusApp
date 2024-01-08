@@ -19,7 +19,8 @@ const Register = (props) => {
     const navigation = props.navigation;
     const [Username, setUsername] = useState('');
     const [Password, setPassword] = useState('');
-    const [Name, setName] = useState('');
+    const [Firstname, setFirstname] = useState('');
+    const [Lastname, setLastname] = useState('');
     const [Birthday, setBirthday] = useState('');
     const [Religion, setReligion] = useState('');
     const [Address, setAddress] = useState('');
@@ -38,7 +39,8 @@ const Register = (props) => {
         const data = {
             email:Username,
             password:Password,
-            name:Name,
+            firstname:Firstname,
+            lasttname:Lastname,
             birthday:Birthday,
             religion:Religion,
             address:Address,
@@ -59,7 +61,8 @@ const Register = (props) => {
     var postData = {
         email: Username,
         password: Password,
-        name: Name,
+        firstname: Firstname,
+        lasttname: Lastname,
         birthday: Birthday,
         religion: Religion,
         address: Address,
@@ -146,12 +149,27 @@ const Register = (props) => {
                                             style={styles.icon2}
                                         ></EvilIconsIcon>
                                         <TextInput
-                                            placeholder="Name"
+                                            placeholder="Firstname"
                                             placeholderTextColor="rgba(255,255,255,1)"
                                             secureTextEntry={false}
                                             style={styles.nameInput}
-                                            onChangeText={e => setName(e)} 
-                                            value={Name}
+                                            onChangeText={e => setFirstname(e)} 
+                                            value={Firstname}
+                                        ></TextInput>
+
+                                </View>
+                                    <View style={styles.password}>
+                                        <EvilIconsIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        ></EvilIconsIcon>
+                                        <TextInput
+                                            placeholder="Lastname"
+                                            placeholderTextColor="rgba(255,255,255,1)"
+                                            secureTextEntry={false}
+                                            style={styles.nameInput}
+                                            onChangeText={e => setLastname(e)} 
+                                            value={Lastname}
                                         ></TextInput>
 
                                 </View>
@@ -168,7 +186,6 @@ const Register = (props) => {
                                             onChangeText={e => setBirthday(e)} 
                                             value={Birthday}
                                         ></TextInput>
-
 
                                 </View>
                                     <View style={styles.password}>

@@ -199,7 +199,6 @@ const AppointCalendar = (props) => {
             //this.setState({ _markedDates : { [_selectedDay]: {selected: true, marked: true, selectedColor: 'red'} }});
             console.log(Constants.expoConfig.extra.backend+'/api/v1/timeslot?AppointDatetime=' + _selectedDay + '&SlotType=' + slotType)
             
-            
             const value =  deviceStorage.getItem('currentUser')
 
             //const currentUser = JSON.parse(value)
@@ -273,7 +272,6 @@ const AppointCalendar = (props) => {
                         console.log('monthchange')
                         onMonthChange(months);
                     }}
-
 
                     // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
                     //maxDate={'2012-05-30'}

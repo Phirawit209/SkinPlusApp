@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { StyleSheet, Dimensions, ScrollView, Image, ImageBackground, Platform } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';

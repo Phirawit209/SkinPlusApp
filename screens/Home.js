@@ -3,7 +3,6 @@
 import { StyleSheet, Button, View , Dimensions, ScrollView, Image, ImageBackground, Platform } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 
-
 class Home extends React.Component {
     render() {
       const { navigation} = this.props;
@@ -16,14 +15,12 @@ class Home extends React.Component {
               title="เข้าสู่ระบบ"
               onPress={() => navigation.navigate('Login')}
             />
-
-            
+          
           <Button
               title="ลงทะเบียน"
               onPress={() => navigation.navigate('Register',{serviceType: 1, slotType: 1, appointDatetime: '2023-12-21', description: 'test' })}
             />  
   
-      
           <Button
               title="นัดหมายบริการ"
               onPress={() => navigation.navigate('AppointCalendar',{serviceType: 1, slotType: 1, appointDatetime: '2023-12-21', description: 'test' })}
@@ -33,4 +30,3 @@ class Home extends React.Component {
     }
   }
   export default Home;
-

@@ -5,13 +5,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import AppointUpload from './screens/AppointUpload';
 import Home from './screens/Home';
 import MyAppoint from './screens/MyAppoint';
 import AppointCalendar from './screens/AppointCalendar';
 import Login from './screens/Login';
+import LoginScreen from './screens/Login1';
 import Register from './screens/Register';
-import Profile from './screens/Profile';
-
 
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -21,7 +21,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-
         
       <Tab.Screen name="First">
           {() => (
@@ -32,15 +31,13 @@ export default function App() {
                 options={{ title: 'My home', headerShown:false }}
               />
               <HomeStack.Screen name="Login" component={Login} options={{ title: 'My home', headerShown:false }} />
-              <HomeStack.Screen name="Profile" component={Profile} options={{ title: 'Profile', headerShown:false }} />
               <HomeStack.Screen name="MyAppoint" component={MyAppoint} />
               <HomeStack.Screen name="AppointCalendar" component={AppointCalendar} />
+              <HomeStack.Screen name="AppointUpload" component={AppointUpload} />
               <HomeStack.Screen name="Register" component={Register} />
             </HomeStack.Navigator>
           )}
         </Tab.Screen>
-
-
 
         <Tab.Screen name="Second">
           {() => (
@@ -53,8 +50,6 @@ export default function App() {
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>
-
-
        
       </Tab.Navigator>
     </NavigationContainer>
